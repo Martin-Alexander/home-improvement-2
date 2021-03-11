@@ -54,3 +54,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "rspec-rails", "~> 5.0", :groups => [:test, :development]
+
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
+
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+gem "omniauth-facebook", "~> 8.0"
+
+gem "dotenv-rails", "~> 2.7", :groups => [:test, :development]
