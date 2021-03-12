@@ -62,3 +62,11 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "omniauth-facebook", "~> 8.0"
 
 gem "dotenv-rails", "~> 2.7", :groups => [:test, :development]
+
+gem "factory_bot", "~> 6.1"
+
+gem "shoulda-matchers", "~> 4.5", :group => :test
+
+gem "pundit", "~> 2.1"
+
+gem "rails-controller-testing", "~> 1.0", :group => :test
