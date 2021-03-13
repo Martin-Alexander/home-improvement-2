@@ -6,16 +6,16 @@ class ActiveRecord::Base
   end
 end
 
-puts "Clearing database"
+puts "== Clearing database"
 User.destroy_all
 
 5.times do |i|
-  puts "Creating user"
+  puts "== Creating user"
   user = User.create!(email: "user-#{i + 1}@email.com", password: "123456")
 
-  puts "Creating 2 projects"
+  puts "== Creating 2 projects"
   2.times do
-    Project.create!(
+    project = Project.create!(
       user: user,
       title: "#{Faker::Appliance.equipment}, #{Faker::Appliance.equipment}, and #{Faker::Appliance.equipment}",
       description: Faker::Lorem.sentence(word_count: 20),
@@ -23,8 +23,13 @@ User.destroy_all
       estimated_level_of_effort: rand(1..10),
       actual_level_of_effort: rand(1..10)
     )
+
+    puts "== Creating comments"
+    User.all.each do |user|
+      project.comments.create!(user: user, content: Faker::TvShows::SiliconValley.quote)
+    end
   end
 end
 
-puts "Creating admin user"
+puts "== Creating admin user"
 user = User.create!(email: "admin@email.com", password: "123456", admin: true)
