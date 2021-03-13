@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :user do
     email { "bob-#{rand}@email.com" }
+    admin { false }
 
     after(:build) do |user|
       user.password_confirmation = "123456"
