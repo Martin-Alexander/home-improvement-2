@@ -6,15 +6,7 @@ export const NewCommentForm = (props) => {
   return <form
     onSubmit={(event) => {
       event.preventDefault();
-
-      const commentId = Math.floor(Math.random() * 1000);
-      props.setComments(
-        [
-          ...props.comments,
-          { id: commentId, content: input, user: { email: "test@email.com" }}
-        ]
-      );
-
+      props.onSubmit(input);
       setInput("");
     }}
   >
