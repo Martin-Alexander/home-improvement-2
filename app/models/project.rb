@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   STATUS_STARTED   = "started"
   STATUS_STOPPED   = "stopped"
   STATUS_COMPLETED = "completed"
+  STATUSES = [STATUS_CREATED, STATUS_STARTED, STATUS_STOPPED, STATUS_COMPLETED]
 
   belongs_to :user
   has_many :comments, dependent: :destroy
@@ -15,7 +16,7 @@ class Project < ApplicationRecord
     :actual_level_of_effort
   )
 
-  validates :status, inclusion: { in: [STATUS_CREATED, STATUS_STARTED, STATUS_STOPPED, STATUS_COMPLETED] }
+  validates :status, inclusion: { in: STATUSES }
   validates :actual_level_of_effort, inclusion:    { in: (1..10).to_a }
   validates :estimated_level_of_effort, inclusion: { in: (1..10).to_a }
 
