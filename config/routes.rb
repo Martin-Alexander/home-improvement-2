@@ -6,4 +6,12 @@ Rails.application.routes.draw do
   end
 
   root to: "projects#index"
+
+  defaults format: :json do
+    namespace :api do
+      resources :projects, only: [] do
+        resources :comments, only: :index
+      end
+    end
+  end
 end
