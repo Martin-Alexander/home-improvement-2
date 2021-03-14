@@ -1,8 +1,12 @@
-<%= simple_form_for(@project) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :status, collection: Project::STATUSES %>
-  <%= f.input :estimated_level_of_effort, collection: 1..10 %>
-  <%= f.input :actual_level_of_effort, collection: 1..10 %>
-  <%= f.submit %>
-<% end %>
+<div class="max-w-2xl">
+  <h2 class="text-xl font-medium mt-4">Add Your Home Improvement Project</h2>
+
+  <%= simple_form_for(@project) do |f| %>
+    <%= f.input :title, input_html: { autocomplete: "off" }  %>
+    <%= f.input :description  %>
+    <%= f.input :status, collection: Project::STATUSES.map { |status| [status.capitalize, status] }  %>
+    <%= f.input :estimated_level_of_effort, collection: 1..10, hint: "On a scale of 1-10"  %>
+    <%= f.input :actual_level_of_effort, collection: 1..10, hint: "On a scale of 1-10"  %>
+    <%= f.submit "SUBMIT", class: "btn mt-2", style: "background-color: var(--red)" %>
+  <% end %>
+</div>

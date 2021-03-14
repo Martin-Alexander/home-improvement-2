@@ -15,14 +15,29 @@ body {
   color: var(--black-text);
 }
 
-a {
-  color: var(--black-text);
+abbr[title] {
+  text-decoration: none;
 }
 
 .btn {
   @apply px-8 py-2 rounded-sm cursor-pointer text-sm text-white text-opacity-90 font-bold;
+  white-space: nowrap;
 }
 
 .btn:hover {
   @apply text-opacity-100;
+}
+
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+textarea,
+select
+{
+  @apply w-full;
+}
+
+input[type='checkbox'] {
+  @apply w-auto;
 }
