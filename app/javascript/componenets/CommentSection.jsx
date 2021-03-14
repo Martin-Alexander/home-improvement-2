@@ -12,7 +12,9 @@ export const CommentSection = (props) => {
     refreshCommentsFromApi(projectId, setComments);
 
     // Every ten seconds, load new comments
-    refreshCommentsFromApi(projectId, setComments, comments);
+    setTimeout(() => {
+      refreshCommentsFromApi(projectId, setComments, comments);
+    }, 10 * 1000);
   }, []);
 
   const onSubmitCallback = async (commentContent) => {
