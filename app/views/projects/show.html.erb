@@ -1,6 +1,8 @@
 <main class="bg-white p-4 my-4 rounded-sm shadow-sm">
   <%= render "project", project: @project %>
   <hr class="my-4">
-  <h1 class="text-lg font-bold mb-4">Comments (<%= @project.comments.count %>)</h1>
-  <div data-react-comments data-user-signed-in="<%= user_signed_in? %>" data-project-id="<%= @project.id %>">
+  <div class="lg:flex lg:justify-between lg:space-x-6">
+    <div class="flex-grow" data-react-comments data-user-signed-in="<%= user_signed_in? %>" data-project-id="<%= @project.id %>"></div>
+    <div class="lg:w-96 lg:flex-shrink-0 flex mt-4 max-h-48"></div>
+  </div>
 </main>
