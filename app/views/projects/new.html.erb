@@ -1,0 +1,8 @@
+<%= simple_form_for(@project) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :status, collection: [Project::STATUS_CREATED, Project::STATUS_STARTED, Project::STATUS_STOPPED, Project::STATUS_COMPLETED] %>
+  <%= f.input :estimated_level_of_effort, collection: 1..10 %>
+  <%= f.input :actual_level_of_effort, collection: 1..10 %>
+  <%= f.submit %>
+<% end %>

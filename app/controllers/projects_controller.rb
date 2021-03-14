@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @projects = policy_scope(Project)
+    @projects = policy_scope(Project).includes(:user)
   end
 
   def show

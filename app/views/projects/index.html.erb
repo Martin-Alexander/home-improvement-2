@@ -1,7 +1,13 @@
+<% if user_signed_in? && policy(Project.new).create? %>
+  <p><%= link_to "New Project", new_project_path %></p>
+<% end %>
+
 <main>
   <% @projects.each do |project| %>
     <section>
-      <h2><%= project.title %></h2>
+      <%= link_to project_path(project) do %>
+        <h2><%= project.title %></h2>
+      <% end %>
       <p><%= project.description %></p>
       <p><%= project.user.email %></p>
       <p><%= project.status %></p>
