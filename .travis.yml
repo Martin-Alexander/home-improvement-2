@@ -1,3 +1,8 @@
 language: ruby
-before_install:
-  - gem install bundler
+cache:
+  bundler: true
+  yarn: true
+addons:
+  postgresql: '9.6'
+before_script:
+  - psql -c 'create database home_improvement_test;' -U postgres
