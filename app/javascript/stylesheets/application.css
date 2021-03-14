@@ -28,16 +28,35 @@ abbr[title] {
   @apply text-opacity-100;
 }
 
-
-input[type='text'],
-input[type='email'],
-input[type='password'],
-textarea,
-select
-{
-  @apply w-full;
+.simple_form {
+  @apply mb-4;
 }
 
-input[type='checkbox'] {
-  @apply w-auto;
+.simple_form .input input.string,
+.simple_form .input input.password,
+.simple_form .input textarea.text,
+.simple_form .input select.select {
+  @apply w-full block p-2 border border-solid border-gray-300;
+}
+
+.simple_form .input input.boolean {
+  @apply mr-2;
+}
+
+.simple_form div.input {
+  @apply my-4;
+}
+
+.simple_form label {
+  @apply block text-base font-medium text-gray-600 mb-1;
+}
+
+.simple_form .error {
+  @apply block text-red-500;
+}
+
+.simple_form input[type=submit] {
+  @apply btn;
+  background-color: var(--red);
+  text-transform: uppercase;
 }

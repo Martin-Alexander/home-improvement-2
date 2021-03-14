@@ -18,7 +18,8 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <div class="m-auto max-w-7xl px-2">
+    <%= render "shared/mobile_menu" %>
+    <div id="page-content" class="m-auto max-w-7xl px-2">
       <%= yield %>
     </div>
   </body>

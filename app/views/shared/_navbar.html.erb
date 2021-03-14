@@ -9,7 +9,10 @@
       <% end %>
     <% end %>
   </div>
-  <div class="flex space-x-4">
+  <div class="block sm:hidden">
+    <i id="open-burger-menu" class="text-white text-opacity-90 text-2xl fas fa-bars"></i>
+  </div>
+  <div class="space-x-4 hidden sm:flex">
     <% if user_signed_in? %>
       <%= link_to destroy_user_session_path, method: :delete do %>
         <div class="btn" style="background-color: var(--blue-dark)">SIGN OUT</div>

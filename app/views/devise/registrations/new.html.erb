@@ -1,7 +1,7 @@
 <div class="max-w-2xl">
   <h2 class="text-xl font-medium mt-4">Sign up</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "mb-4" }) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
@@ -19,7 +19,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "SIGN UP", style: "background-color: var(--red)" %>
+      <%= f.button :submit, "sign up" %>
     </div>
   <% end %>
 
