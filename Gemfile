@@ -72,3 +72,5 @@ gem "pundit", "~> 2.1"
 gem "rails-controller-testing", "~> 1.0", :group => :test
 
 gem "faker", "~> 2.17"
+
+gem "simple_form", "~> 5.1"
