@@ -3,8 +3,6 @@ class ProjectPolicy < ApplicationPolicy
     def resolve
       if user.blank?
         scope.publicly_visable
-      elsif user.admin
-        scope.all
       else
         scope.publicly_visable.or(user.projects)
       end
@@ -12,7 +10,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def show?
-    record.public? || user_is_owner? || user_is_admin?
+    record.public? || user_is_owner?
   end
 
   def create?
@@ -20,20 +18,16 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def update?
-    user_is_owner? || user_is_admin?
+    user_is_owner?
   end
 
   def destroy?
-    user_is_owner? || user_is_admin?
+    user_is_owner?
   end
 
   private
 
   def user_is_owner?
     record.user == user
-  end
-
-  def user_is_admin?
-    user.admin
   end
 end

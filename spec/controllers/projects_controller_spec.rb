@@ -103,7 +103,7 @@ RSpec.describe ProjectsController, type: :controller do
 
       before(:each) { sign_in(user) }
 
-      it "creates a new project" do
+      it "does not create a new project" do
         expect { response }.to change(Project, :count).by(0)
       end
 

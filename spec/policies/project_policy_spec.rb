@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe ProjectPolicy, type: :policy do
   let!(:user)                { create(:user) }
-  let!(:admin)               { create(:user, admin: true) }
   let!(:public_project)      { create(:project) }
   let!(:private_project)     { create(:project, private: true) }
   let!(:my_private_project)  { create(:project, private: true, user: user) }
@@ -21,10 +20,6 @@ RSpec.describe ProjectPolicy, type: :policy do
     it "does not return private projects you dont own" do
       expect(ProjectPolicy::Scope.new(user, Project).resolve).to_not include(private_project)
     end
-
-    it "returns private projects you dont own if you're the admin" do
-      expect(ProjectPolicy::Scope.new(admin, Project).resolve).to include(private_project)
-    end
   end
 
   permissions :show? do
@@ -37,10 +32,6 @@ RSpec.describe ProjectPolicy, type: :policy do
     context "private project" do
       it "grants access to its owner" do
         expect(subject).to permit(user, my_private_project)
-      end
-
-      it "grants access to an admin" do
-        expect(subject).to permit(admin, my_private_project)
       end
 
       it "denies access to everyone else" do
@@ -58,10 +49,6 @@ RSpec.describe ProjectPolicy, type: :policy do
   permissions :update?, :destroy? do
     it "grants access to its owner" do
       expect(subject).to permit(public_project.user, public_project)
-    end
-
-    it "grants access to an admin" do
-      expect(subject).to permit(admin, public_project)
     end
 
     it "denies access to everyone else" do

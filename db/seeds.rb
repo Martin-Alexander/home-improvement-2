@@ -30,6 +30,3 @@ User.destroy_all
     end
   end
 end
-
-puts "== Creating admin user"
-user = User.create!(email: "admin@email.com", password: "123456", admin: true)
