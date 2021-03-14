@@ -11,7 +11,7 @@ export const CommentSection = (props) => {
     refreshCommentsFromApi(projectId, setComments);
 
     setInterval(() => {
-      refreshCommentsFromApi(projectId, setComments);
+      refreshCommentsFromApi(projectId, setComments, comments);
     }, 10 * 1000)
   }, []);
 
@@ -24,9 +24,13 @@ export const CommentSection = (props) => {
   </div>
 }
 
-const refreshCommentsFromApi = async (projectId, setComments) => {
+const refreshCommentsFromApi = async (projectId, setComments, existingComments) => {
   const response = await fetchWithAuthentication(`/api/projects/${projectId}/comments`);
   const commentsJson = await response.json();
+
+  if (existingComments) {
+    markPreviouslyUnseedCommentsAsNew(existingComments, commentsJson);
+  }
 
   setComments(commentsJson);
 }
@@ -48,4 +52,14 @@ const createNewCommentFormOnSubmitCallback = (projectId, comments, setComments) 
   }
 
   return postNewCommentAndUpdateState;
+}
+
+const markPreviouslyUnseedCommentsAsNew = (existingComments, incomingComments) => {
+  const existingCommentIds = existingComments.map(comment => comment.id);
+
+  incomingComments.forEach((comment) => {
+    if (!existingCommentIds.includes(comment.id)) {
+      comment.new = true;
+    }
+  });
 }
