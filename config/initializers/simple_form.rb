@@ -54,7 +54,7 @@ SimpleForm.setup do |config|
     ## Inputs
     # b.use :input, class: 'input', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :label, class: "block text-base font-medium text-gray-700 mb-1"
-    b.use :input, class: "block p-2 border border-solid border-gray-400"
+    b.use :input, class: "block p-2 border border-solid border-gray-300"
     b.use :hint,  wrap_with: { tag: :span, class: :hint }
     b.use :error, wrap_with: { tag: :span, class: "block text-red-500" }
 
