@@ -1,0 +1,37 @@
+<div class="sm:flex sm:justify-between sm:space-x-2 items-start sm:space-x-6">
+  <%= link_to project_path(project) do %>
+    <h2 class="text-xl font-bold"><%= project.title %></h2>
+  <% end %>
+
+  <% if project.completed? %>
+    <p class="lg:w-96 md:w-80 sm:w-64 sm:flex-shrink-0 sm:flex sm:justify-center sm:items-center inline-block uppercase border px-4 py-1 mt-2 border-green-600 border-solid text-green-600"><%= project.status %></p>
+  <% else %>
+    <p class="lg:w-96 md:w-80 sm:w-64 sm:flex-shrink-0 sm:flex sm:justify-center sm:items-center inline-block uppercase border px-4 py-1 mt-2 border-red-500 border-solid text-red-500"><%= project.status %></p>
+  <% end %>
+</div>
+
+<hr class="my-4">
+<div class="flex flex-wrap space-x-4 mb-4">
+  <p class="space-x-2"><i class="fas fa-user"></i><span><%= project.user.name %></span></p>
+  <p class="space-x-2"><i class="far fa-clock"></i><span><%= time_ago_in_words(project.created_at) %> ago</span></p>
+  <%= link_to project_path(project) do %>
+    <p class="space-x-2"><i class="far fa-comment"></i><span><%= pluralize(project.comments.count, "comment") %></span></p>
+  <% end %>
+</div>
+<div class="block sm:flex sm:justify-between sm:space-x-6">
+  <p><%= project.description %></p>
+  <div class="lg:w-96 md:w-80 sm:w-64 sm:flex-shrink-0 flex mt-4 max-h-48" style="background-color: var(--background);">
+    <div class="flex flex-col justify-between text-center p-6 text-gray-400 w-1/2 border-gray-300 border-solid border-2">
+      <h4 class="text-lg font-bold">Estimated Level of Effort</h4>
+      <p class="text-5xl font-semibold"><%= project.estimated_level_of_effort %></p>
+    </div>
+    <div class="flex flex-col justify-between text-center p-6 text-gray-400 w-1/2 border-gray-300 border-solid border-t-2 border-b-2 border-r-2">
+      <h4 class="text-lg font-bold">Actual Level of Effort</h4>
+      <% if project.completed? %>
+        <p class="text-5xl font-semibold text-green-600"><%= project.actual_level_of_effort %></p>
+      <% else %>
+        <p class="text-5xl font-semibold"><%= project.actual_level_of_effort %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

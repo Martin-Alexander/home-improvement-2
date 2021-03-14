@@ -2,6 +2,27 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+:root {
+  --blue:      #0029D0;
+  --blue-dark: #002F9B;
+  --red:       #FF002A;
+  --background:#EFF3F7;
+  --black-text:#353535;
+}
+
 body {
-  background-color: bisque;
+  background-color: var(--background);
+  color: var(--black-text);
+}
+
+a {
+  color: var(--black-text);
+}
+
+.btn {
+  @apply px-8 py-2 rounded-sm cursor-pointer text-sm text-white text-opacity-90 font-bold;
+}
+
+.btn:hover {
+  @apply text-opacity-100;
 }

@@ -23,9 +23,8 @@ export const CommentSection = (props) => {
   }
 
   return <div>
-    <h1>Coments</h1>
     <Comments comments={comments} />
-    <NewCommentForm onSubmit={onSubmitCallback}/>
+    { props.userSignedIn && <NewCommentForm onSubmit={onSubmitCallback}/> }
   </div>
 }
 

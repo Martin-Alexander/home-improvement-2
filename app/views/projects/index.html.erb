@@ -1,19 +1,7 @@
-<% if user_signed_in? && policy(Project.new).create? %>
-  <p><%= link_to "New Project", new_project_path %></p>
-<% end %>
-
 <main>
   <% @projects.each do |project| %>
-    <section>
-      <%= link_to project_path(project) do %>
-        <h2><%= project.title %></h2>
-      <% end %>
-      <p><%= project.description %></p>
-      <p><%= project.user.email %></p>
-      <p><%= project.status %></p>
-      <h3>Effort</h3>
-      <p><strong>Estimated:</strong> <%= project.estimated_level_of_effort %></p>
-      <p><strong>Actual:</strong> <%= project.actual_level_of_effort %></p>
+    <section class="bg-white p-4 my-4 rounded-sm shadow-sm">
+      <%= render "project", project: project %>
     </section>
   <% end %>
 </main>

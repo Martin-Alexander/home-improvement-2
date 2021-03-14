@@ -29,4 +29,8 @@ class Project < ApplicationRecord
   def private?
     private
   end
+
+  def completed?
+    status == STATUS_COMPLETED
+  end
 end

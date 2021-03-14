@@ -11,15 +11,15 @@ User.destroy_all
 
 5.times do |i|
   puts "== Creating user"
-  user = User.create!(email: "user-#{i + 1}@email.com", password: "123456")
+  user = User.create!(email: "user-#{i + 1}@email.com", name: Faker::Name.name, password: "123456")
 
   puts "== Creating 2 projects"
   2.times do
     project = Project.create!(
       user: user,
       title: "#{Faker::Appliance.equipment}, #{Faker::Appliance.equipment}, and #{Faker::Appliance.equipment}",
-      description: Faker::Lorem.sentence(word_count: 20),
-      status: [Project::STATUS_CREATED, Project::STATUS_STARTED, Project::STATUS_STOPPED, Project::STATUS_COMPLETED].sample,
+      description: Faker::Lorem.sentence(word_count: 80),
+      status: Project::STATUSES.sample,
       estimated_level_of_effort: rand(1..10),
       actual_level_of_effort: rand(1..10)
     )

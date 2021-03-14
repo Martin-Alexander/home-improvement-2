@@ -1,0 +1,26 @@
+<nav class="flex py-3 px-4 mb-10 justify-between" style="background-color: var(--blue)" >
+  <div class="flex items-center">
+    <%= link_to root_path do %>
+      <h1 class="text-white text-opacity-90 hover:text-opacity-100 text-lg font-bold mr-8">HOME IMPROVEMENT</h1>
+    <% end %>
+    <% if user_signed_in? && policy(Project.new).create? %>
+      <%= link_to new_project_path, class: "hidden sm:block" do %>
+        <div class="btn" role="button" style="background-color: var(--red)">NEW PROJECT</div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="flex space-x-4">
+    <% if user_signed_in? %>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <div class="btn" style="background-color: var(--blue-dark)">SIGN OUT</div>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path, class: "hidden sm:block" do %>
+        <div class="btn" style="background-color: var(--blue-dark)">SIGN IN</div>
+      <% end %>
+      <%= link_to new_user_registration_path do %>
+        <div class="btn" style="background-color: var(--blue-dark)">SIGN UP</div>
+      <% end %>
+    <% end %>
+  </div>
+</nav>
