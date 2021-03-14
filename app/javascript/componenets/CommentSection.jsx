@@ -18,14 +18,22 @@ export const CommentSection = (props) => {
     refreshCommentsFromApi(projectId, setComments);
 
     // Every ten seconds, load new comments
-    setInterval(() => {
+    const interval = setInterval(() => {
       refreshCommentsFromApi(projectId, setComments, comments);
     }, 10 * 1000);
+
+    return () => {
+      clearInterval(interval);
+    }
   }, []);
 
   const onSubmitCallback = async (commentContent) => {
-    const commentJson = await CommentsConsumer.Create(projectId, commentContent)
-    setComments(perpareComments([...comments, commentJson]));
+    try {
+      const commentJson = await CommentsConsumer.Create(projectId, commentContent)
+      setComments(perpareComments([...comments, commentJson]));
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   return <div>
@@ -37,20 +45,24 @@ export const CommentSection = (props) => {
 
 
 const refreshCommentsFromApi = async (projectId, setComments, existingComments) => {
-  const commentsJson = await CommentsConsumer.Index(projectId);
+  try {
+    const commentsJson = await CommentsConsumer.Index(projectId);
 
-  // If 'existingComments' was passed in, then mark any new comments as 'new'
-  if (existingComments) {
-    const existingCommentIds = existingComments.map(comment => comment.id);
+    // If 'existingComments' was passed in, then mark any new comments as 'new'
+    if (existingComments) {
+      const existingCommentIds = existingComments.map(comment => comment.id);
 
-    commentsJson.forEach((comment) => {
-      if (!existingCommentIds.includes(comment.id)) {
-        comment.new = true;
-      }
-    });
+      commentsJson.forEach((comment) => {
+        if (!existingCommentIds.includes(comment.id)) {
+          comment.new = true;
+        }
+      });
+    }
+
+    setComments(perpareComments(commentsJson));
+  } catch (e) {
+    console.error(e);
   }
-
-  setComments(perpareComments(commentsJson));
 }
 
 const perpareComments = (comments) => {

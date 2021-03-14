@@ -14,4 +14,10 @@ export const initializeComments = () => {
       />, reactCommentContainer
     )
   });
+
+  document.addEventListener("turbolinks:before-render", () => {
+    document.querySelectorAll("[data-react-comments]").forEach((reactCommentContainer) => {
+      ReactDOM.unmountComponentAtNode(reactCommentContainer)
+    });
+  });
 }
