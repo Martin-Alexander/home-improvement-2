@@ -1,4 +1,6 @@
-export const fetchWithAuthentication = (url, options) => {
+import { csrfToken } from "@rails/ujs";
+
+export const fetchWithAuthentication = (url, options = {}) => {
   options.headers = {
     "X-CSRF-Token": csrfToken(),
     ...options.headers

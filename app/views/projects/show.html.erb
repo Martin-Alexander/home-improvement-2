@@ -7,6 +7,6 @@
   <p><strong>Estimated:</strong> <%= @project.estimated_level_of_effort %></p>
   <p><strong>Actual:</strong> <%= @project.actual_level_of_effort %></p>
 
-  <div data-react-comments>
+  <div data-react-comments data-project-id="<%= @project.id %>">
   </div>
 </main>
