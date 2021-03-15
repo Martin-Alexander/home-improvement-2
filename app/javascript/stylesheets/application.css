@@ -1,3 +1,5 @@
+@import "normalize.css";
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -17,6 +19,12 @@ body {
 
 abbr[title] {
   text-decoration: none;
+}
+
+input, select, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  background-color: white;
 }
 
 .btn {
