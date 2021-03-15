@@ -75,3 +75,27 @@ abbr[title] {
   background-color: var(--red);
   text-transform: uppercase;
 }
+
+.fade-in {
+  -moz-animation: fadein 500ms;
+  -webkit-animation: fadein 500ms;
+  -o-animation: fadein 500ms;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@-o-keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

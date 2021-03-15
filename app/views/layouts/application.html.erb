@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="turbolinks-cache-control" content="no-cache">
 
     <%= stylesheet_pack_tag "stylesheets", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_pack_tag "stylesheets", "data-turbolinks-track": "reload" %>
@@ -17,10 +18,12 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
     <%= render "shared/mobile_menu" %>
-    <div id="page-content" class="m-auto max-w-7xl px-2">
-      <%= yield %>
+    <div id="page-content">
+      <%= render "shared/navbar" %>
+      <div class="m-auto max-w-7xl px-2">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

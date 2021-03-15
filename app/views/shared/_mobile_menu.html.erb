@@ -1,4 +1,4 @@
-<div id="mobile-menu" class="absolute top-0 bottom-0 w-full hidden flex-col justify-center items-center space-y-6 pb-20" style="background-color: var(--blue);">
+<div id="mobile-menu" class="fade-in absolute top-0 bottom-0 w-full hidden flex-col justify-center items-center space-y-6 pb-20" style="background-color: var(--blue);">
   <i id="close-burger-menu" class="absolute top-0 right-1 p-3 text-white text-opacity-90 text-2xl fas fa-times"></i>
   <% if user_signed_in? %>
     <% if policy(Project.new).create? %>
