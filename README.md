@@ -36,3 +36,4 @@ Some things that I would work on next:
 - Flashes to improve UX
 - Sign up confirmation emails to prevent spam accounts
 - Some small CSS bugs
+- Better caching strategy for "live" comments (or use WS instead)
