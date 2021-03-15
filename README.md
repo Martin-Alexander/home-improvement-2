@@ -33,5 +33,6 @@ The comment system polls the Rails API for new comments.
 Some things that I would work on next:
 
 - A "My Projects" dashboard where uses can edit and delete their own projects
+- Flashes to improve UX
 - Sign up confirmation emails to prevent spam accounts
 - Some small CSS bugs
