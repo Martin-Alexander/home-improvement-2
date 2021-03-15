@@ -28,10 +28,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # def update
-
-  # end
-
   def destroy
     project = Project.find(params[:id])
     authorize project
@@ -44,6 +40,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :description, :status, :estimated_level_of_effort, :actual_level_of_effort)
+    params.require(:project).permit(:title, :description, :status, :estimated_level_of_effort, :actual_level_of_effort, :private)
   end
 end

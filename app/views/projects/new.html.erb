@@ -8,6 +8,7 @@
     <%= f.input :status, collection: Project::STATUSES.map { |status| [status.capitalize, status] }  %>
     <%= f.input :estimated_level_of_effort, collection: 1..10, hint: "On a scale of 1-10"  %>
     <%= f.input :actual_level_of_effort, collection: 1..10, hint: "On a scale of 1-10"  %>
+    <%= f.input :private  %>
     <%= f.submit "submit" %>
   <% end %>
 </div>
