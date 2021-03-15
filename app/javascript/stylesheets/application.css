@@ -21,10 +21,17 @@ abbr[title] {
   text-decoration: none;
 }
 
-input, select, textarea {
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
-  background-color: white;
+@media (min-device-width: 320px) and (max-device-width: 768px) {
+  input,
+  select,
+  textarea {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+  }
+
+  input[type="checkbox"] {
+    -webkit-appearance: auto;
+  }
 }
 
 .btn {
