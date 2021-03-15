@@ -28,7 +28,7 @@ The comment system uses React. It fetches and sends data to Rails API endpoints.
 
 The comment system polls the Rails API for new comments.
 
-## Going further
+## Going Further
 
 Some things that I would work on next:
 
